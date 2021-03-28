@@ -1,0 +1,28 @@
+[0m2021.03.24 06:45:32 INFO  Started: Metals version 0.10.0 in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs' for client vscode 1.54.3.[0m
+[0m2021.03.24 06:45:32 INFO  time: initialize in 0.61s[0m
+[0m2021.03.24 06:45:33 WARN  Build server is not auto-connectable.[0m
+[0m2021.03.24 06:45:33 WARN  no build tool detected in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.03.24 07:25:57 INFO  shutting down Metals[0m
+[0m2021.03.24 22:53:37 INFO  Started: Metals version 0.10.0 in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs' for client vscode 1.54.3.[0m
+[0m2021.03.24 22:53:37 INFO  time: initialize in 0.71s[0m
+[0m2021.03.24 22:53:37 WARN  Build server is not auto-connectable.[0m
+[0m2021.03.24 22:53:37 WARN  no build tool detected in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.03.24 23:07:19 INFO  shutting down Metals[0m
+[0m2021.03.25 05:48:49 INFO  Started: Metals version 0.10.0 in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs' for client vscode 1.54.3.[0m
+[0m2021.03.25 05:48:49 INFO  time: initialize in 0.62s[0m
+[0m2021.03.25 05:48:51 WARN  Build server is not auto-connectable.[0m
+[0m2021.03.25 05:48:51 WARN  no build tool detected in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+mar 25, 2021 5:57:22 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMAZIONI: Unsupported notification method: $/setTraceNotification
+[0m2021.03.25 07:48:58 INFO  shutting down Metals[0m
+[0m2021.03.28 10:06:03 INFO  Started: Metals version 0.10.0 in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs' for client vscode 1.54.3.[0m
+[0m2021.03.28 10:06:04 INFO  time: initialize in 0.65s[0m
+[0m2021.03.28 10:06:04 WARN  Build server is not auto-connectable.[0m
+[0m2021.03.28 10:06:04 WARN  no build tool detected in workspace '/Users/calogeromalaponti/Desktop/elixir/sim_neg_gs'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+mar 28, 2021 11:14:28 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMAZIONI: Unsupported notification method: $/setTraceNotification
+mar 28, 2021 11:14:37 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMAZIONI: Unsupported notification method: $/setTraceNotification
+mar 28, 2021 11:16:39 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMAZIONI: Unsupported notification method: $/setTraceNotification
+[0m2021.03.28 11:18:04 INFO  shutting down Metals[0m

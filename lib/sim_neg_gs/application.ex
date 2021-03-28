@@ -3,17 +3,10 @@ defmodule SimNegGs.Application do
   # for more information on OTP Applications
   @moduledoc false
 
-  #capacità magazzino negozio
-  @cm 10
-  #frequenza consumo
-  @fc {5, 2}
-  #tempo consegna azienda massimo
-  @tc 10
   #lista consumers
   @cl [:c1, :c2, :c3]
   #lista aziende
   @al [:a1, :a2, :a3]
-
 
   use Application
 
@@ -23,7 +16,6 @@ defmodule SimNegGs.Application do
     [
       # Starts a worker by calling: SimNegGs.Worker.start_link(arg)
       # {SimNegGs.Worker, arg}
-      {SimNegGs.Consumatore, [:pippo, :pluto]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

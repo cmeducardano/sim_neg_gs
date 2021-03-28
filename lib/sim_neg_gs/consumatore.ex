@@ -1,24 +1,77 @@
 defmodule SimNegGs.Consumatore do
-  @moduledoc false
+  @moduledoc """
+  gestisce la simulazione del comportamento dei consumatori
+  bla ... bla...
+  """
 
-
+  #frequenza consumo 5s
+  @fc 5000
+  #timeout per richiedere licenziamento direttore
+  @tld 10
 
   use GenServer
 
-  def start_link(state) do
-    state |> IO.inspect(label: "Init Consumer state")
-    GenServer.start_link(__MODULE__, state, "")
+  # struct per la gestione dello stato del server
+
+  defstruct [cname: nil, shopPid: nil, delay: 5, n: 3]
+
+  ##########
+  # client #
+  ##########
+
+  # inizializzazione processo
+
+  def start_link({init_args, opts}) do
+    #utilizziamo opts per ricevere e registrare il nome del processo
+       GenServer.start_link(__MODULE__, init_args, opts)
   end
 
-  def init(_opts) do
-    {:ok, %{}}
+  # riceve consegna dall'azienda
+
+  def consegna(spid, msg) do
+      GenServer.cast(spid, msg)
   end
 
-  def handle_call(_msg, _from, state) do
-    {:reply, :ok, state}
+
+  ##########
+  # server #
+  ##########
+
+  # inizializzazione processo
+
+  @impl true
+  def init({spid}) do
+    # schedula un messaggio di tipo :consume a sè stesso dopo un timeout ct
+    Process.send_after(self(), :consume, @fc )
+
+  {:ok, {spid}}
   end
 
-  def handle_cast(_msg, state) do
-    {:noreply, state}
+  # riceve il messaggio :consume
+  # se ci sono le condizioni effettua l'ordine al negozio
+  @impl true
+  def handle_info(:consume, {spid}) do
+    # invia ordine al negozio
+    #setta timeout per la risposta del negozio @tld
+  {:noreply, {spid}, @tld}
   end
+
+  # se l'ordine non viene consegnato per tempo dal negozio
+  # invia al negozio la richiesta di licenziare il direttore
+  @impl true
+  def handle_info(:timeout, {spid}) do
+    # gestisce il timeout attivato dall'ordine al negozio
+    # chiede il licenziamento del direttore
+  {:noreply, {spid}}
+  end
+
+  # riceve l'ordine dal negozio
+  @impl true
+  def handle_cast({}, {spid, ct, cf}) do
+    #processa prodotto ricevuto dal negozio
+    #attiva il timeout per il prossimo consumo
+    Process.send_after(self(), :consume, ct)
+    {:noreply, {spid, ct, cf}}
+  end
+
 end

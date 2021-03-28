@@ -1,23 +1,43 @@
 defmodule SimNegGs.Azienda do
-  @moduledoc false
-  
-
+  @moduledoc """
+  modulo genserver che gestisce l'azienda
+  """
+  #ritardo massimo consegna ordine al negozio
+  @rco 20
 
   use GenServer
 
-  def start_link(state, opts) do
+  # struct per la gestione dello stato del server
+  defstruct [:pidShop, value: :Negozio]
+
+  #
+  # interfaccia client
+  #
+
+  # inizializzazione processo
+
+  def start_link({state, opts}) do
     GenServer.start_link(__MODULE__, state, opts)
   end
 
-  def init(_opts) do
-    {:ok, %{}}
+  # riceve ordine dal negozio
+
+
+  #
+  # interfaccia server
+  #
+
+  #inizializzazione processo
+  @impl true
+  @spec init(any) :: {:ok, any}
+  def init(state) do
+    {:ok, state}
   end
 
-  def handle_call(_msg, _from, state) do
-    {:reply, :ok, state}
-  end
-
+  # riceve ordine dal negozio ed invia la merce
+  @impl true
   def handle_cast(_msg, state) do
     {:noreply, state}
   end
+
 end
