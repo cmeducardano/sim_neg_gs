@@ -17,6 +17,8 @@ defmodule SimNegGs.Azienda do
   # inizializzazione processo
 
   def start_link({state, opts}) do
+    state|> IO.inspect(label: "initialization state")
+    opts|> IO.inspect(label: "initialization opts")
     GenServer.start_link(__MODULE__, state, opts)
   end
 
