@@ -2,19 +2,22 @@ defmodule SimNegGs.Negozio do
   @moduledoc """
   bla bla bla
   """
+@cm 10
 
   use GenServer
 
   # struct per la gestione dello stato del server
 
-  defstruct [cname: nil, shopPid: nil, delay: 5, n: 3]
+  defstruct [cm: @cm, pm: @cm, pc: 0, aPidL: nil ]
 
   ##########
   # Client #
   ##########
 
   # inizializzazione processo
-  def start_link(state, opts) do
+  def start_link({state, opts}) do
+    state|> IO.inspect(label: "initialization state")
+    opts|> IO.inspect(label: "initialization opts")
     GenServer.start_link(__MODULE__, state, opts)
   end
 

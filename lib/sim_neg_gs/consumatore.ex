@@ -21,9 +21,8 @@ defmodule SimNegGs.Consumatore do
 
   # inizializzazione processo
 
-  def start_link({init_args, opts}) do
-    #utilizziamo opts per ricevere e registrare il nome del processo
-       GenServer.start_link(__MODULE__, init_args, opts)
+  def start_link({state, opts}) do
+    GenServer.start_link(__MODULE__, state, opts)
   end
 
   # riceve consegna dall'azienda
