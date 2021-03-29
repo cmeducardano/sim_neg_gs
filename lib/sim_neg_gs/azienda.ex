@@ -8,7 +8,7 @@ defmodule SimNegGs.Azienda do
   use GenServer
 
   # struct per la gestione dello stato del server
-  defstruct [aname: nil, pidShop: nil]
+  defstruct [aname: nil]
 
   #
   # interfaccia client
