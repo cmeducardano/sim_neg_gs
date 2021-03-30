@@ -45,6 +45,8 @@ defmodule SimNegGs.Application do
 
     # processo negozio
     negozio  = [
+      # questa è come se fosse la sola clausa start dell'altra notazione child
+      # notate che nei casi precedenti passiamo due parametri in questo caso uno solo (tupla)
       {Negozio, {%Negozio{aPidL: @al},[name: @ng]}}
     ]
 
