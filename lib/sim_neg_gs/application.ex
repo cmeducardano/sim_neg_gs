@@ -36,6 +36,7 @@ defmodule SimNegGs.Application do
       %{ id: an,
          start: { Azienda, :start_link,
                   [
+                    #essendo specificati due parametri la start_link corrispondente deve ricevere due parametri
                     %Azienda{aname: an},
                     [name: an]
                   ]
