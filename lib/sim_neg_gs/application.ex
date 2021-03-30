@@ -11,10 +11,8 @@ defmodule SimNegGs.Application do
   @ng :negozio
 
   alias SimNegGs.Consumatore, as: Consumatore
-  alias SimNegGs.Azienda, as: Azienda
-  alias SimNegGs.Negozio, as: Negozio
-
-
+  alias SimNegGs.Azienda,     as: Azienda
+  alias SimNegGs.Negozio,     as: Negozio
 
   use Application
 
@@ -23,27 +21,42 @@ defmodule SimNegGs.Application do
 
     #genera la lista dei processi consumatori
     consumatori = Enum.map(@cl, fn cn ->
-      {Consumatore, {%Consumatore{cname: cn, shopPid: @ng}, [name: cn]}} end )
+      %{ id: cn,
+         start: {Consumatore, :start_link,
+                  [
+                    %Consumatore{cname: cn, shopPid: @ng},
+                    [name: cn]
+                  ]
+                }
+        }
+      end )
 
     #genera la lista dei processi azienda
     aziende = Enum.map(@al, fn an ->
-    {Azienda, {%Azienda{aname: an}, [name: an]}} end )
+      %{ id: an,
+         start: { Azienda, :start_link,
+                  [
+                    %Azienda{aname: an},
+                    [name: an]
+                  ]
+                }
+        }
+       end )
 
     # processo negozio
     negozio  = [
-      {Negozio, {%Negozio{aPidL: @al},[name: @al]}}
+      {Negozio, {%Negozio{aPidL: @al},[name: @ng]}}
     ]
 
-    children = consumatori ++ aziende ++ negozio |>
+    children = negozio ++ consumatori ++ aziende |>
         IO.inspect(label: "childrens")
 
     # Starts a worker by calling: SimNegGs.Worker.start_link(arg)
     # {SimNegGs.Worker, arg}
-
-
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: SimNegGs.Supervisor]
     Supervisor.start_link(children, opts)
+
   end
 end

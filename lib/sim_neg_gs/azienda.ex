@@ -16,9 +16,9 @@ defmodule SimNegGs.Azienda do
 
   # inizializzazione processo
 
-  def start_link({state, opts}) do
-    state|> IO.inspect(label: "initialization state")
-    opts|> IO.inspect(label: "initialization opts")
+  def start_link(state, opts) do
+    state |> IO.inspect(label: "initialization state")
+    opts  |> IO.inspect(label: "initialization opts ")
     GenServer.start_link(__MODULE__, state, opts)
   end
 
@@ -31,8 +31,7 @@ defmodule SimNegGs.Azienda do
 
   #inizializzazione processo
   @impl true
-  @spec init(any) :: {:ok, any}
-  def init(state) do
+   def init(state) do
     {:ok, state}
   end
 

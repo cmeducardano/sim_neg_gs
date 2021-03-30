@@ -13,7 +13,7 @@ defmodule SimNegGs.Consumatore do
 
   # struct per la gestione dello stato del server
 
-  defstruct [cname: nil, shopPid: nil, delay: 5, n: 3]
+  defstruct [cname: nil, shopPid: nil, delay: @fc, n: 3]
 
   ##########
   # client #
@@ -21,9 +21,9 @@ defmodule SimNegGs.Consumatore do
 
   # inizializzazione processo
 
-  def start_link({state, opts}) do
-    state|> IO.inspect(label: "initialization state")
-    opts|> IO.inspect(label: "initialization opts")
+  def start_link(state, opts) do
+    state|> IO.inspect(label: "initialization state client")
+    opts |> IO.inspect(label: "initialization opts")
     GenServer.start_link(__MODULE__, state, opts)
   end
 
@@ -41,11 +41,12 @@ defmodule SimNegGs.Consumatore do
   # inizializzazione processo
 
   @impl true
-  def init({spid}) do
+  def init(state) do
+    state|> IO.inspect(label: "initialization state server")
     # schedula un messaggio di tipo :consume a sè stesso dopo un timeout ct
-    Process.send_after(self(), :consume, @fc )
+    # Process.send_after(self(), :consume, @fc )
 
-  {:ok, {spid}}
+  {:ok, state}
   end
 
   # riceve il messaggio :consume
